@@ -1,0 +1,23 @@
+<turbo-stream action="append" target="messages">
+    <template>
+        <tr>
+            <td>
+                {{ date | date('H:i:s:u') }}
+            </td>
+            <td>
+                <span class="badge rounded-pill text-bg-secondary">
+                    {{ queue }}
+                </span>
+            </td>
+            <td><strong>{{ class }}</strong></td>
+            <td>
+                <code>{{ data | json_encode(constant('JSON_PRETTY_PRINT')) }}</code>
+            </td>
+            <td>
+                <span class="badge rounded-pill text-bg-{{ status == 'success' ? 'success' : 'danger' }}">
+                    {{ status }}
+                </span>
+            </td>
+        </tr>
+    </template>
+</turbo-stream>

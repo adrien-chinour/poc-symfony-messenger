@@ -1,0 +1,12 @@
+<div id="notifications" data-url="{{ mercure('/notifications') }}" aria-live="polite" aria-atomic="true">
+    <div id="notifications-container" class="toast-container bottom-0 end-0 p-3">
+        {# toast prototype duplicated in notification.js #}
+        <div id="toast-prototype" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header text-light">
+                <strong class="me-auto toast-title"></strong>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body"></div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="col-lg-10 mx-auto p-4 py-md-5">
+        <header class="d-flex align-items-center pb-3 mb-5 border-bottom">
+            <a href="#" class="d-flex align-items-center text-dark text-decoration-none">
+                <span class="fs-4 fw-bold">
+                    <i class="fa-brands fa-square-github fa-1x"></i>
+                    adrien-chinour/poc-symfony-messenger
+                </span>
+            </a>
+        </header>
+        <main>
+            <h1>[POC] Integrate symfony/messenger</h1>
+            <p class="fs-5 col-md-8">
+                This project is a proof-of-concept about using symfony/messenger in production.
+            </p>
+
+            <div class="d-inline-flex">
+                <button onclick="fetch('{{ path('publish_article') }}')" type="button"
+                        class="btn btn-outline-success btn-lg">
+                    Send successful message
+                </button>
+                <button onclick="fetch('{{ path('publish_article', {'type': 'error'}) }}')" type="button"
+                        class="btn btn-outline-danger btn-lg ms-2">
+                    Send fail message
+                </button>
+            </div>
+
+            <hr class="col-3 col-md-2 mb-5">
+
+            <div class="row g-5">
+                <section class="col-12">
+                    <h2>
+                        <i class="fa-solid fa-sync fa-spin"></i>
+                        Queue events
+                    </h2>
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>Time</th>
+                            <th>Queue</th>
+                            <th>Class</th>
+                            <th>Data</th>
+                            <th>Status</th>
+                        </tr>
+                        </thead>
+                        <tbody id="messages" {{ turbo_stream_listen('/messages') }}>
+                        </tbody>
+                    </table>
+                </section>
+            </div>
+        </main>
+    </div>
+{% endblock %}
